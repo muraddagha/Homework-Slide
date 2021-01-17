@@ -1,10 +1,14 @@
 .slide {
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .slide .slide-item {
   padding: 15px;
   margin-left: 3px;
+  width: 24%;
 }
 
 .img {
@@ -17,7 +21,7 @@
 }
 
 .img:hover {
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .close {
@@ -85,5 +89,23 @@
 .modal-gallery .content-modal .prev-btn i {
   color: white;
   font-size: 35px;
+}
+
+@media screen and (max-width: 1200px) {
+  .slide {
+    justify-content: flex-start;
+  }
+  .slide .slide-item {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .slide {
+    justify-content: center;
+  }
+  .slide .slide-item {
+    width: 49%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

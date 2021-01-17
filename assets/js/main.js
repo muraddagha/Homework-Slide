@@ -5,6 +5,7 @@ let slideItem = document.querySelectorAll(".slide-item");
 let btnClose = document.querySelector(".close");
 let prevBtn = document.querySelector(".prev-btn");
 let nextBtn = document.querySelector(".next-btn");
+
 window.addEventListener("wheel", function (e) {
   try {
     if (e.deltaY < 0) {
@@ -12,6 +13,19 @@ window.addEventListener("wheel", function (e) {
     }
     if (e.deltaY > 0) {
       prevButton();
+    }
+  } catch (error) {}
+});
+window.addEventListener("keydown", function (e) {
+  try {
+    if (e.key == "ArrowRight") {
+      nextButton();
+    }
+    if (e.key == "ArrowLeft") {
+      prevButton();
+    }
+    if (e.key == "Escape") {
+      closeButton();
     }
   } catch (error) {}
 });
@@ -59,8 +73,9 @@ function prevButton() {
     active.previousElementSibling.classList.add("active");
     modalImg.src = getImgSrc();
   } else {
-    slideItem[3].classList.add("active");
-    modalImg.src = slideItem[3].children[0].src;
+    document.querySelector(".slide-item:last-child").classList.add("active");
+
+    modalImg.src = getImgSrc();
   }
 }
 function getImgSrc() {
