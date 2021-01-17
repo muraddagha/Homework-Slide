@@ -1,0 +1,89 @@
+.slide {
+  display: flex;
+}
+
+.slide .slide-item {
+  padding: 15px;
+  margin-left: 3px;
+}
+
+.img {
+  padding: 5px;
+  background: white;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  max-width: 100%;
+  height: auto;
+}
+
+.img:hover {
+  opacity: 0.9;
+}
+
+.close {
+  display: none;
+}
+
+.modal-gallery {
+  position: fixed;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.582);
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  z-index: 9999999999999999;
+}
+
+.modal-gallery .content-modal {
+  position: relative;
+}
+
+.modal-gallery .content-modal img {
+  padding: 5px;
+  border: 1px solid;
+  background: white;
+  max-width: 100%;
+  height: auto;
+}
+
+.modal-gallery .content-modal .close {
+  z-index: 3;
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  color: white;
+}
+
+.modal-gallery .content-modal .close i {
+  font-size: 25px;
+}
+
+.modal-gallery .content-modal .next-btn {
+  position: absolute;
+  top: 50%;
+  left: 97%;
+  cursor: pointer;
+}
+
+.modal-gallery .content-modal .next-btn i {
+  font-size: 35px;
+  color: white;
+}
+
+.modal-gallery .content-modal .prev-btn {
+  position: absolute;
+  top: 50%;
+  right: 97%;
+  cursor: pointer;
+}
+
+.modal-gallery .content-modal .prev-btn i {
+  color: white;
+  font-size: 35px;
+}
+/*# sourceMappingURL=style.css.map */
