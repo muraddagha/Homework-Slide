@@ -1,60 +1,39 @@
+let images = document.querySelectorAll(".img");
 let modal = document.querySelector(".modal-gallery");
 let modalImg = document.querySelector("#modal-img");
-let images = document.querySelectorAll(".img");
 let slideItem = document.querySelectorAll(".slide-item");
-let btnClose = document.querySelector(".close");
-let prevBtn = document.querySelector(".prev-btn");
-let nextBtn = document.querySelector(".next-btn");
 
-window.addEventListener("wheel", function (e) {
-  try {
-    if (e.deltaY < 0) {
-      nextButton();
-    }
-    if (e.deltaY > 0) {
-      prevButton();
-    }
-  } catch (error) {}
-});
-window.addEventListener("keydown", function (e) {
-  try {
-    if (e.key == "ArrowRight") {
-      nextButton();
-    }
-    if (e.key == "ArrowLeft") {
-      prevButton();
-    }
-    if (e.key == "Escape") {
-      closeButton();
-    }
-  } catch (error) {}
-});
 //events
 images.forEach((value) => {
   value.addEventListener("click", function () {
-    modal.style.display = "flex";
-    modalImg.src = this.src;
-    value.parentNode.classList.add("active");
+    popUpModal(value, this.src);
   });
 });
-btnClose.addEventListener("click", function () {
-  closeButton();
+modal.addEventListener("click", function (e) {
+  if (e.target == this) {
+    closeButton();
+  }
 });
-nextBtn.addEventListener("click", function () {
-  nextButton();
-});
-prevBtn.addEventListener("click", function () {
-  prevButton();
-});
+document.querySelector(".close").addEventListener("click", closeButton);
+document.querySelector(".next-btn").addEventListener("click", nextButton);
+document.querySelector(".prev-btn").addEventListener("click", prevButton);
 
 //functions
+function popUpModal(value, src) {
+  modal.style.display = "flex";
+  modalImg.src = src;
+  value.parentNode.classList.add("active");
+  window.addEventListener("wheel", wheelScroll);
+  window.addEventListener("keydown", changeByKey);
+}
 function closeButton() {
   modal.style.display = "none";
   slideItem.forEach((e) => {
     e.classList.remove("active");
   });
+  window.removeEventListener("wheel", wheelScroll);
+  window.removeEventListener("keydown", changeByKey);
 }
-
 function nextButton() {
   let active = document.querySelector(".slide .slide-item.active");
   active.classList.remove("active");
@@ -81,4 +60,23 @@ function prevButton() {
 function getImgSrc() {
   let activeImgSrc = document.querySelector(".active").children[0].src;
   return activeImgSrc;
+}
+function wheelScroll(e) {
+  if (e.deltaY < 0) {
+    nextButton();
+  }
+  if (e.deltaY > 0) {
+    prevButton();
+  }
+}
+function changeByKey(e) {
+  if (e.key == "ArrowRight") {
+    nextButton();
+  }
+  if (e.key == "ArrowLeft") {
+    prevButton();
+  }
+  if (e.key == "Escape") {
+    closeButton();
+  }
 }

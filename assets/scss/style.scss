@@ -17,7 +17,8 @@
   max-width: 100%;
   height: auto;
   &:hover {
-    opacity: 0.8;
+    transform: scale(0.9);
+    transition: 1s;
   }
 }
 .close {
@@ -34,8 +35,11 @@
   padding-top: 2rem;
   padding-bottom: 3rem;
   z-index: 9999999999999999;
+  height: 100%;
+  align-items: center;
   .content-modal {
     position: relative;
+    margin: 5px;
     img {
       padding: 5px;
       border: 1px solid;
@@ -58,7 +62,9 @@
     .next-btn {
       position: absolute;
       top: 50%;
-      left: 97%;
+      right: 10px;
+      cursor: pointer;
+      transform: translateY(-50%);
       cursor: pointer;
       i {
         font-size: 35px;
@@ -68,7 +74,9 @@
     .prev-btn {
       position: absolute;
       top: 50%;
-      right: 97%;
+      left: 10px;
+      cursor: pointer;
+      transform: translateY(-50%);
       cursor: pointer;
       i {
         color: white;
